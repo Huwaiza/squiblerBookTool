@@ -1,12 +1,14 @@
 from rest_framework import serializers
 
-from nesting_books.models import Book
+from nesting_books.models import Book, BookSection
+
 
 # serializer for book model
 class BookModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = '__all__'
+
 
 # serializer for creating section of book
 class CreateBookSectionSerializer(serializers.Serializer):
@@ -16,4 +18,11 @@ class CreateBookSectionSerializer(serializers.Serializer):
     book = serializers.IntegerField(required=True)
 
     class Meta:
+        fields = '__all__'
+
+
+# serializer for book sections
+class BookSectionModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BookSection
         fields = '__all__'

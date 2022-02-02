@@ -1,8 +1,9 @@
 from rest_framework import viewsets, permissions, generics, status
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from nesting_books.models import Book, BookSection
-from nesting_books.serializers import BookModelSerializer, CreateBookSectionSerializer
+from nesting_books.serializers import BookModelSerializer, CreateBookSectionSerializer, BookSectionModelSerializer
 
 
 class BookModelViewset(viewsets.ModelViewSet):
@@ -40,7 +41,7 @@ class CreateBookSection(generics.GenericAPIView):
                             "section_title": book_section.section_title,
                             "section_description": book_section.section_description,
                             "book_id": book_section.book.id,
-                            "parent_section_id": book_section.parent_section.id
+                            "parent_section_id": book_section.parent_section.id if book_section.parent_section else None
                         },
                         "status_code": status.HTTP_201_CREATED,
                     })
@@ -58,3 +59,14 @@ class CreateBookSection(generics.GenericAPIView):
                 })
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class BookSectionList(generics.ListCreateAPIView):
+    queryset = BookSection.objects.all()
+    serializer_class = BookSectionModelSerializer
+    permission_classes = [AllowAny]
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = BookSectionModelSerializer(queryset, many=True)
+        return Response(serializer.data)
