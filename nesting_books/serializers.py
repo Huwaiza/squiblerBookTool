@@ -26,3 +26,25 @@ class BookSectionModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookSection
         fields = '__all__'
+
+
+class DeleteBookSectionSerializer(serializers.Serializer):
+    section_id = serializers.IntegerField(required=True)
+
+    class Meta:
+        fields = '__all__'
+
+
+class AssignBookSectionSerializer(serializers.Serializer):
+    section_id = serializers.IntegerField(required=True)
+    assign_to_section_id = serializers.IntegerField(required=True)
+
+    class Meta:
+        fields = '__all__'
+
+
+class UnassignBookSectionSerializer(serializers.Serializer):
+    section_id = serializers.IntegerField(required=True)
+
+    class Meta:
+        fields = '__all__'
