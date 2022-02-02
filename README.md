@@ -45,6 +45,6 @@ Run following command to create superuser
 After creating super user login to url
 127.0.0.1/admin
 after signing in hit the url 127.0.0.1/docs where you will see every API used in system,
-you can interect with them and can also use them via postman
+you can interact with them and can also use them via postman
 
 
