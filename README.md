@@ -45,6 +45,8 @@ Run following command to create superuser
 Run following command to run test cases
 
     python manage.py test nesting_books
+Swagger Docs
+
 
 After creating super user login to url
 127.0.0.1/admin
