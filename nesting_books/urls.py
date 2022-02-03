@@ -5,6 +5,8 @@ from rest_framework.routers import DefaultRouter
 from nesting_books.view.book import BookModelViewset, CreateBookSection, BookSectionList, DeleteBookSection, \
     AssignToParentSection, UnassignBookSection
 
+app_name = 'nesting_books'
+
 router = DefaultRouter()
 
 router.register('', BookModelViewset, basename='bookModelViewset')
