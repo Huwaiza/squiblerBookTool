@@ -42,6 +42,10 @@ Run following command to create superuser
 
     python manage.py createsuperuser
 
+Run following command to run test cases
+
+    python manage.py test nesting_books
+
 After creating super user login to url
 127.0.0.1/admin
 after signing in hit the url 127.0.0.1/docs where you will see every API used in system,
